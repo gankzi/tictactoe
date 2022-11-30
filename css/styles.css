@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    --borders: 2px solid black;
+}
+
+header {
+    font-family: 'Nerko One', cursive;
+    text-align: center;
+    font-size: 3rem;
+    padding: 40px;
+}
+
+main {
+    font-family: 'Nerko One', cursive;
+    font-size: 10rem;
+}
+
+#game-container {
+    margin: 100px auto;
+    width: 600px;
+    height: 600px;
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 200px 200px 200px;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.X:hover, .O:hover {
+    cursor: not-allowed;
+}
+
+.box:hover {
+    background-color: lightgray;
+}
+
+#box1 {
+    border-right: var(--borders);
+    border-bottom: var(--borders);
+}
+
+#box2 {
+    border-bottom: var(--borders);
+}
+
+#box3 {
+    border-left: var(--borders);
+    border-bottom: var(--borders);
+}
+
+#box4 {
+    border-right: var(--borders);
+}
+
+#box6 {
+    border-left: var(--borders);
+}
+
+#box7 {
+    border-top: var(--borders);
+    border-right: var(--borders);
+}
+
+#box8 {
+    border-top: var(--borders);
+}
+
+#box9 {
+    border-top: var(--borders);
+    border-left: var(--borders);
+}

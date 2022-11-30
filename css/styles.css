@@ -4,6 +4,10 @@
     --borders: 2px solid black;
 }
 
+body {
+    position: relative;
+}
+
 header {
     font-family: 'Nerko One', cursive;
     text-align: center;
@@ -74,4 +78,39 @@ main {
 #box9 {
     border-top: var(--borders);
     border-left: var(--borders);
+}
+
+.result-page {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-header {
+    font-size: 8rem;
+    color: whitesmoke;
+}
+
+.restart {
+    font-size: 1.5rem;
+    border-radius: 20px;
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.restart:hover {
+    background-color: black;
+    color: white;
+}
+
+#result {
+    display: flex;
 }

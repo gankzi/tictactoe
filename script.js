@@ -2,6 +2,9 @@ const boxes = document.querySelectorAll([".box"]);
 const boxP = document.querySelectorAll([".box-p"]);
 const resultPage = document.querySelector(".result-page");
 const resultHeading = document.querySelector(".result-header");
+const optionP = document.querySelector("#set-game");
+const playPlayer = document.querySelector("#play-player");
+const playBot = document.querySelector("#play-bot");
 const classX = "X";
 const classO = "O";
 const winConditions = [
@@ -16,15 +19,59 @@ const winConditions = [
 ];
 let currentSign = classX;
 
-boxes.forEach((box) => box.addEventListener("click", displayMark, {once: true}));
+function startGamePlayer() {
+boxes.forEach((box) => box.addEventListener("click", displayMarkPlayer, {once: true}));
+optionP.classList.add("hide");
+playPlayer.setAttribute('disabled', '');
+playBot.setAttribute('disabled','');
+};
 
-function displayMark(event) {
+function startGameBot() {
+boxes.forEach((box) => box.addEventListener("click", displayMarkBot, {once: true}));
+optionP.classList.add("hide");
+playPlayer.setAttribute('disabled', '');
+playBot.setAttribute('disabled','');
+}
+
+
+function displayMarkPlayer(event) {
     event.target.classList.add(currentSign);
     event.target.firstElementChild.textContent = currentSign;
    
     checkGameResult();
     currentSign = currentSign == classX ? classO : classX; 
 }
+
+function displayMarkBot(event) {
+    event.target.classList.add(currentSign);
+    event.target.firstElementChild.textContent = currentSign;
+   
+    checkGameResult();
+    botSelect();
+}
+
+function botSelect() {
+    let botPick = Math.floor(Math.random() * 9);
+    if (!resultPage.hasAttribute("id")) {
+    checkIfSelected(botPick);
+    };
+};
+
+function checkIfSelected(botPick) {
+    if (boxes[botPick].classList.contains("X") || boxes[botPick].classList.contains("O")) {
+      botSelect();
+    } else {
+      botMark(botPick);
+    }
+};
+
+function botMark(pick) {
+    boxes[pick].classList.add("O");
+    boxes[pick].firstElementChild.textContent = "O";
+    checkGameResult();
+}
+
+
 
 function checkGameResult() {
 
@@ -59,7 +106,7 @@ function checkGameResult() {
 
        };
    
-       checkWin();
+    checkWin();
 };
 
 function restart() {
@@ -68,5 +115,8 @@ function restart() {
     boxes.forEach((box) => box.classList.remove("O"));
     boxes.forEach((box) => box.classList.remove("X"));
     boxP.forEach((p) => p.textContent = "");
-    boxes.forEach((box) => box.addEventListener("click", displayMark, {once: true}));
+    optionP.classList.remove("hide");
+    playPlayer.removeAttribute("disabled");
+    playBot.removeAttribute("disabled");
 }
+

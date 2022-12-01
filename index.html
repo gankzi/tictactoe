@@ -14,7 +14,9 @@
   <body>
     <header>
       <h1>Tic Tac Toe</h1>
-      <p id=""></p>
+      <p id="set-game">Select an option</p>
+      <button id="play-player" onclick="startGamePlayer()">VS Player</button>
+      <button id="play-bot" onclick="startGameBot()">VS Bot</button>
     </header>
     <main>
       <div id="game-container">
@@ -46,7 +48,7 @@
           <p class="box-p" id="box9-p"></p>
         </div>
       </div>
-      <div class="result-page" id="">
+      <div class="result-page">
         <h1 class="result-header"></h1>
         <button class="restart" onclick="restart()">Play Again</button>
       </div>

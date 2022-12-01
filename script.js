@@ -7,6 +7,7 @@ const playPlayer = document.querySelector("#play-player");
 const playBot = document.querySelector("#play-bot");
 const classX = "X";
 const classO = "O";
+let currentSign = classX;
 const winConditions = [
     [0,1,2],
     [3,4,5],
@@ -17,21 +18,20 @@ const winConditions = [
     [0,4,8],
     [2,4,6]
 ];
-let currentSign = classX;
 
 function startGamePlayer() {
-boxes.forEach((box) => box.addEventListener("click", displayMarkPlayer, {once: true}));
-optionP.classList.add("hide");
-playPlayer.setAttribute('disabled', '');
-playBot.setAttribute('disabled','');
+    boxes.forEach((box) => box.addEventListener("click", displayMarkPlayer, {once: true}));
+    optionP.classList.add("hide");
+    playPlayer.setAttribute('disabled', '');
+    playBot.setAttribute('disabled','');
 };
 
 function startGameBot() {
-boxes.forEach((box) => box.addEventListener("click", displayMarkBot, {once: true}));
-optionP.classList.add("hide");
-playPlayer.setAttribute('disabled', '');
-playBot.setAttribute('disabled','');
-}
+    boxes.forEach((box) =>  box.addEventListener("click", displayMarkBot, {once: true}));
+    optionP.classList.add("hide");
+    playPlayer.setAttribute('disabled', '');
+    playBot.setAttribute('disabled','');
+};
 
 
 function displayMarkPlayer(event) {
@@ -40,7 +40,7 @@ function displayMarkPlayer(event) {
    
     checkGameResult();
     currentSign = currentSign == classX ? classO : classX; 
-}
+};
 
 function displayMarkBot(event) {
     event.target.classList.add(currentSign);
@@ -48,7 +48,7 @@ function displayMarkBot(event) {
    
     checkGameResult();
     botSelect();
-}
+};
 
 function botSelect() {
     let botPick = Math.floor(Math.random() * 9);
@@ -110,13 +110,6 @@ function checkGameResult() {
 };
 
 function restart() {
-    currentSign = classX;
-    resultPage.removeAttribute("id");
-    boxes.forEach((box) => box.classList.remove("O"));
-    boxes.forEach((box) => box.classList.remove("X"));
-    boxP.forEach((p) => p.textContent = "");
-    optionP.classList.remove("hide");
-    playPlayer.removeAttribute("disabled");
-    playBot.removeAttribute("disabled");
-}
+     window.location.reload();
+};
 
